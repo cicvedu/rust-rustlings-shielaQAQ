@@ -5,7 +5,7 @@
 // You should not modify any existing code. All you need to do is add two line of attributes.
 
 
-// I AM NOT DONE
+
 
 
 extern {
@@ -34,3 +34,7 @@ mod tests {
         }
     }
 }
+
+#[link(name = "drive5")]
+#[link(name = "Foo")]
+extern {}
