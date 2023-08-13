@@ -4,8 +4,8 @@
 // code in the testcase should call the same function.
 // You should not modify any existing code. All you need to do is add two line of attributes.
 
-
-
+extern crate drive5 as Foo; 
+use Foo::my_demo_function;
 extern {
     fn my_demo_function(a:u32) -> u32;
     fn my_demo_function_alias(a:u32) -> u32;
@@ -27,9 +27,9 @@ mod tests {
     #[test]
     fn test_success() {
         unsafe {
-            #[link(name = "Foo")]
+            //#[link(name = "Foo")]
             Foo::my_demo_function(123);
-            #[link(name = "my_demo_function")]
+            //#[link(name = "my_demo_function")]
             Foo::my_demo_function_alias(456);
         }
     }
