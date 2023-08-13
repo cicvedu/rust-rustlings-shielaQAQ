@@ -19,13 +19,14 @@ extern {
 
 
 mod Foo{
-    pub fn my_demo_function(a:u32) -> u32 {a}
+    fn my_demo_function(a:u32) -> u32 {a}
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    #[link(name = "Foo")]
+    extern {}
     #[test]
     fn test_success() {
         unsafe {
