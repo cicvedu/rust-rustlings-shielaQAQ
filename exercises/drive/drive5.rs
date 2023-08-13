@@ -7,9 +7,9 @@
 
 
 extern {
-    #[link_name = "my_demo_function"]
+    //#[link_name = "my_demo_function"]
     fn my_demo_function(a:u32) -> u32;
-    #[link_name = "my_demo_function_alias"]
+    //#[link_name = "my_demo_function_alias"]
     fn my_demo_function_alias(a:u32) -> u32;
 }
 
@@ -17,7 +17,7 @@ extern {
 
 
 mod Foo{
-    pub fn my_demo_function(a:u32) -> u32 {a}
+    fn my_demo_function(a:u32) -> u32 {a}
 }
 
 
@@ -28,8 +28,10 @@ mod tests {
 
     #[test]
     fn test_success() {
+        #[link(name = "drive5", kind = "static")]
+        #[link(name = "Foo", kind = "static")]
         unsafe {
-            Foo::my_demo_function(123);
+            my_demo_function(123);
             my_demo_function_alias(456);
         }
     }
