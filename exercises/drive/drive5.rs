@@ -22,7 +22,7 @@ mod Foo{
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::Foo;
+
 
     #[test]
     fn test_success() {
