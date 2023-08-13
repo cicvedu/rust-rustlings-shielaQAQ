@@ -4,6 +4,7 @@
 // code in the testcase should call the same function.
 // You should not modify any existing code. All you need to do is add two line of attributes.
 
+#[link(name = "drive5")]
 extern {
     fn my_demo_function(a:u32) -> u32;
     #[link_name = "my_demo_function"]
@@ -17,7 +18,7 @@ mod Foo{
     fn my_demo_function(a:u32) -> u32 {a}
 }
 
-pub use Foo::my_demo_function;
+
 #[cfg(test)]
 mod tests {
     use super::*;
