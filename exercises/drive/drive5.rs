@@ -29,7 +29,7 @@ mod tests {
     #[test]
     fn test_success() {
         unsafe {
-            Foo::my_demo_function(123);
+            my_demo_function(123);
             my_demo_function_alias(456);
         }
     }
