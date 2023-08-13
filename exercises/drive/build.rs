@@ -13,6 +13,6 @@ fn main() {
     println!("Generated timestamp: {}", start_timestamp);
 
     // Set the pass feature conditionally
-    //#[cfg(feature = "pass")]
+    #[cfg(feature = "pass")]
     println!("cargo:rustc-cfg=feature=\"pass\"");
 }
