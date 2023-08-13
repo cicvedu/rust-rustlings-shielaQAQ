@@ -3,8 +3,8 @@
 // Execute `rustlings hint drive1` or use the `hint` watch subcommand for a
 // hint.
 
-
-
+use std::sync::{Arc, Mutex};
+use std::time::Instant;
 
 struct Foo {
     a: u128,
@@ -12,10 +12,12 @@ struct Foo {
 }
 
 fn raw_pointer_to_box(address: usize) -> Box<Foo> {
+    // Convert the address back to a raw pointer and then to a Box.
+    let raw_ptr = address as *mut Foo;
     unsafe {
-        // Convert the address back to a raw pointer and then to a Box.
-        let raw_ptr = address as *mut Foo;
-        Box::from_raw(raw_ptr)
+        let mut data = Box::from_raw(raw_ptr);
+        data.b = Some("hello".to_owned()); // Modify the b field
+        data
     }
 }
 
