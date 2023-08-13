@@ -21,8 +21,8 @@ mod Foo{
 
 #[cfg(test)]
 mod tests {
+    use super::Foo::*;
     use super::*;
-
 
     #[test]
     fn test_success() {
