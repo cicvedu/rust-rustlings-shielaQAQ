@@ -21,6 +21,7 @@ pub use Foo::my_demo_function;
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::Foo;
 
     #[test]
     fn test_success() {
