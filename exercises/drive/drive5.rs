@@ -20,12 +20,16 @@ mod Foo{
     fn my_demo_function(a:u32) -> u32 {a}
 }
 
-
+#[link(name = "drive5")]
+#[link(name = "Foo")]
+extern {}
 
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    #[link(name = "drive5")]
+    #[link(name = "Foo")]
+    extern {}
     #[test]
     fn test_success() {
         unsafe {
@@ -34,7 +38,3 @@ mod tests {
         }
     }
 }
-
-#[link(name = "drive5")]
-#[link(name = "Foo")]
-extern {}
