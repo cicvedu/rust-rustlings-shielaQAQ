@@ -18,8 +18,6 @@ mod Foo{
 #[cfg(test)]
 mod tests {
     use super::*;
-    #[link(name = "Foo")]
-    extern {}
     #[test]
     fn test_success() {
         unsafe {
