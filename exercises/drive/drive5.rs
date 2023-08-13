@@ -28,9 +28,9 @@ mod tests {
     fn test_success() {
         unsafe {
             #[link_name = "my_demo_function"]
-            my_demo_function(123);
+            Foo::my_demo_function(123);
             #[link_name = "my_demo_function"]
-            my_demo_function_alias(456);
+            Foo::my_demo_function_alias(456);
         }
     }
 }
