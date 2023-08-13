@@ -7,10 +7,11 @@
 
 
 
-
+#[link(name = "drive5")]
+#[link(name = "Foo")]
 extern {
     fn my_demo_function(a:u32) -> u32;
-    #[link(name = "Foo")]
+    //#[link(name = "Foo")]
     fn my_demo_function_alias(a:u32) -> u32;
 }
 
