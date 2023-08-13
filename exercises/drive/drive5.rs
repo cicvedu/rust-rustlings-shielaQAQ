@@ -14,8 +14,8 @@ extern {
 
 
 
-pub mod Foo{
-    pub fn my_demo_function(a:u32) -> u32 {a}
+mod Foo{
+    fn my_demo_function(a:u32) -> u32 {a}
 }
 
 
@@ -27,9 +27,9 @@ mod tests {
     #[test]
     fn test_success() {
         unsafe {
-            #[link_name = "my_demo_function"]
+            #[link(name = "Foo")]
             Foo::my_demo_function(123);
-            #[link_name = "my_demo_function"]
+            #[link(name = "my_demo_function")]
             Foo::my_demo_function_alias(456);
         }
     }
