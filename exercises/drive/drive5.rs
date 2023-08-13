@@ -6,8 +6,8 @@
 
 
 
-
-
+#[link_name = "my_demo_function"]
+#[link(name = "my_demo_function_alias")]
 extern {
     fn my_demo_function(a:u32) -> u32;
     fn my_demo_function_alias(a:u32) -> u32;
@@ -26,8 +26,6 @@ mod Foo{
 mod tests {
     use super::*;
 
-    #[link_name = "my_demo_function"]
-    extern {fn my_demo_function_alias(a: u32) -> u32;}
     #[test]
     fn test_success() {
         unsafe {
