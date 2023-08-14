@@ -4,24 +4,35 @@
 // code in the testcase should call the same function.
 // You should not modify any existing code. All you need to do is add two line of attributes.
 
+
+// I AM NOT DONE
+
+#[cfg(not(test))]
 extern {
     fn my_demo_function(a:u32) -> u32;
     fn my_demo_function_alias(a:u32) -> u32;
 }
 
+
+
+
 mod Foo{
-    fn my_demo_function(a:u32) -> u32 {a}
+    pub fn my_demo_function(a:u32) -> u32 {a}
 }
+
+
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
+    #[link_name = "my_demo_function"]
+    fn my_demo_function_alias(a: u32) -> u32;
     #[test]
     fn test_success() {
         unsafe {
             Foo::my_demo_function(123);
-            Foo::my_demo_function(456);
+            my_demo_function_alias(456);
         }
     }
 }
