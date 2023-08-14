@@ -7,7 +7,7 @@
 
 // I AM NOT DONE
 
-#[cfg(not(test))]
+
 extern {
     fn my_demo_function(a:u32) -> u32;
     fn my_demo_function_alias(a:u32) -> u32;
@@ -17,7 +17,7 @@ extern {
 
 
 mod Foo{
-    pub fn my_demo_function(a:u32) -> u32 {a}
+    fn my_demo_function(a:u32) -> u32 {a}
 }
 
 
@@ -26,12 +26,12 @@ mod Foo{
 mod tests {
     use super::*;
 
-    #[link_name = "my_demo_function"]
-    fn my_demo_function_alias(a: u32) -> u32;
     #[test]
     fn test_success() {
         unsafe {
-            Foo::my_demo_function(123);
+            #[link(name = "my_demo_function", kind = "static")]
+            my_demo_function(123);
+            #[link(name = "my_demo_function", kind = "static")]
             my_demo_function_alias(456);
         }
     }
