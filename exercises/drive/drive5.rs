@@ -9,7 +9,9 @@
 
 
 extern {
+    #[link(name = "my_demo_function", kind = "static")]
     fn my_demo_function(a:u32) -> u32;
+    #[link(name = "my_demo_function", kind = "static")]
     fn my_demo_function_alias(a:u32) -> u32;
 }
 
@@ -29,9 +31,9 @@ mod tests {
     #[test]
     fn test_success() {
         unsafe {
-            #[link(name = "my_demo_function", kind = "static")]
+            
             my_demo_function(123);
-            #[link(name = "my_demo_function", kind = "static")]
+            
             my_demo_function_alias(456);
         }
     }
