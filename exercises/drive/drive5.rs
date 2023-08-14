@@ -22,12 +22,11 @@ mod Foo{
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    use crate::Foo;
     #[test]
     fn test_success() {
         unsafe {
             my_demo_function(123);
-            #[link_name = "Foo::my_demo_function"]
             my_demo_function_alias(456);
         }
     }
