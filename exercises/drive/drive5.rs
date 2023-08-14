@@ -26,11 +26,10 @@ mod Foo{
 #[cfg(test)]
 mod tests {
     use super::*;
-    #[path = "drive5.rs"]
     #[test]
     fn test_success() {
         unsafe {
-            my_demo_function(123);
+            Foo::my_demo_function(123);
             my_demo_function_alias(456);
         }
     }
