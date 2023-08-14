@@ -3,8 +3,8 @@
 // Execute `rustlings hint drive1` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
+use std::sync::{Arc, Mutex};
+use std::time::Instant;
 
 struct Foo {
     a: u128,
@@ -12,11 +12,14 @@ struct Foo {
 }
 
 fn raw_pointer_to_box(address: usize) -> Box<Foo> {
-    // address is a pointer that points to heap.
-    // construct Box from this address, and modify Foo's b field to 
-    // the string "hello"
+    // Convert the address back to a raw pointer and then to a Box.
+    let raw_ptr = address as *mut Foo;
+    unsafe {
+        let mut data = Box::from_raw(raw_ptr);
+        data.b = Some("hello".to_owned()); // Modify the b field
+        data
+    }
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -39,6 +42,5 @@ mod tests {
 
         assert!(ptr_1 == ptr_2);
         assert!(ret.b == Some("hello".to_owned()));
-
     }
 }
