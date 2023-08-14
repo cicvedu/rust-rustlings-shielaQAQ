@@ -6,7 +6,6 @@
 
 
 extern {
-    #[link_name = "Foo::my_demo_function"]
     fn my_demo_function(a:u32) -> u32;
     #[link_name = "Foo::my_demo_function"]
     fn my_demo_function_alias(a:u32) -> u32;
@@ -16,7 +15,7 @@ extern {
 
 
 mod Foo{
-    pub fn my_demo_function(a:u32) -> u32 {a}
+    fn my_demo_function(a:u32) -> u32 {a}
 }
 
 
@@ -28,6 +27,7 @@ mod tests {
     fn test_success() {
         unsafe {
             my_demo_function(123);
+            #[link_name = "Foo::my_demo_function"]
             my_demo_function_alias(456);
         }
     }
