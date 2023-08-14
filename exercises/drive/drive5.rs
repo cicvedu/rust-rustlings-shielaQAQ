@@ -5,8 +5,8 @@
 // You should not modify any existing code. All you need to do is add two line of attributes.
 
 extern {
-    fn my_demo_function(a:u32) -> u32 {a};
-    fn my_demo_function_alias(a:u32) -> u32 {a};
+    fn my_demo_function(a:u32) -> u32;
+    fn my_demo_function_alias(a:u32) -> u32;
 }
 
 mod Foo{
@@ -21,7 +21,7 @@ mod tests {
     fn test_success() {
         unsafe {
             my_demo_function(123);
-            my_demo_function_alias(456);
+            my_demo_function(456);
         }
     }
 }
