@@ -6,8 +6,9 @@
 
 
 extern {
+    #[link_name = "Foo::my_demo_function"]
     fn my_demo_function(a:u32) -> u32;
-    #[link_name = "my_demo_function"]
+    #[link_name = "Foo::my_demo_function"]
     fn my_demo_function_alias(a:u32) -> u32;
 }
 
@@ -15,13 +16,12 @@ extern {
 
 
 mod Foo{
-    pub fn my_demo_function(a:u32) -> u32 {a}
+    fn my_demo_function(a:u32) -> u32 {a}
 }
 
 
 #[cfg(test)]
 mod tests {
-    use super::Foo::*;
     use super::*;
 
     #[test]
