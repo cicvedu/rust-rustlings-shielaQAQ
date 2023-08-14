@@ -10,7 +10,7 @@ extern {
 }
 
 mod Foo{
-    pub fn my_demo_function(a:u32) -> u32 {a}
+    fn my_demo_function(a:u32) -> u32 {a}
 }
 
 #[cfg(test)]
@@ -20,8 +20,8 @@ mod tests {
     #[test]
     fn test_success() {
         unsafe {
-            my_demo_function(123);
-            my_demo_function(456);
+            Foo::my_demo_function(123);
+            Foo::my_demo_function(456);
         }
     }
 }
